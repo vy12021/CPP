@@ -2,10 +2,14 @@
 #include <boost/timer.hpp>
 #include <bits/stl_algo.h>
 #include <sstream>
+#include <fstream>
 #include "boost/progress.hpp"
+#include "new_progress_timer.hpp"
+#include <boost/date_time.hpp>
 
 using namespace std;
 using namespace boost;
+using namespace date_time;
 
 class a {
 
@@ -44,7 +48,7 @@ int main() {
     int &_x = x;
     cout << "x: " << _x << endl;*/
 
-    a _a(1);
+    /*a _a(1);
     cout << "a.sum(): " << _a.sum() << endl;
 
     stringstream ss;
@@ -59,6 +63,26 @@ int main() {
     }
 
     cout << ss.str() << endl;
-    ss.flush();
+    ss.flush();*/
+
+    new_progress_timer<> * t = new new_progress_timer<>(cout);
+
+
+    vector<string> v(100);
+    ofstream fs("./test.text");    // file output stream
+
+    progress_display pd(v.size());
+
+    vector<string> :: iterator pos;
+    for (pos = v.begin(); pos != v.end(); ++pos) {
+
+        fs << *pos << endl;
+        ++ pd;
+    }
+
+    delete t;
+
+    special_values s;
+    s.
 }
 
